@@ -9,20 +9,20 @@ kind: Service
 metadata:
   annotations:
     cloud.google.com/neg: '{"ingress":true}'
-  labels:
-    app: hello-tsbe
   name: hello-tsbe
   namespace: hello-tsbe
 spec:
+  externalTrafficPolicy: Cluster
   ports:
-  - name: 8080-8080
-    port: 8080
+  - name: http
+    nodePort: 31517
+    port: 80
     protocol: TCP
     targetPort: 8080
   selector:
     app: hello-tsbe
   sessionAffinity: None
-  type: ClusterIP
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -50,7 +50,7 @@ spec:
         app: hello-tsbe
     spec:
       containers:
-      - image: docker.pkg.github.com/ghouscht/tsbe-paas-demo/hellotsbe:latest
+      - image: ghouscht/tsbe-paas-demo:latest
         imagePullPolicy: Always
         name: hellotsbe
         resources: {}

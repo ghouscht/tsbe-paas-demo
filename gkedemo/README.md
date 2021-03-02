@@ -1,6 +1,13 @@
 # HelloTSBE - GKE Demo
 <https://console.cloud.google.com/kubernetes>
 
+## (Re)build and publish docker image
+```bash
+cat TOKEN.txt | docker login -u ghouscht --password-stdin
+docker build -t ghouscht/tsbe-paas-demo:latest .
+docker push ghouscht/tsbe-paas-demo:latest
+```
+
 ## Create a GKE Cluster
 ### 1. provision Cluster
 Easiest way is via WebUI open the link above and do the following: 
@@ -26,10 +33,14 @@ kubectl ns hello-tsbe
 kubectl get all
 ```
 
+### 4. Test
+```
+SERVICE_IP=$(kubectl get svc hello-tsbe -ojsonpath="{.status.loadBalancer.ingress[0].ip}")
+curl http://$SERVICE_IP/
+curl -X POST -d '{"name":"Thomas"}' http://$SERVICE_IP/
+```
 
-## (Re)build docker image
+## Cleanup
 ```bash
-cat TOKEN.txt | docker login https://docker.pkg.github.com -u ghouscht --password-stdin
-docker build -t docker.pkg.github.com/ghouscht/tsbe-paas-demo/hellotsbe:latest .
-docker push docker.pkg.github.com/ghouscht/tsbe-paas-demo/hellotsbe:latest
+gcloud container clusters delete my-first-cluster-1 --region us-central1-c
 ```
