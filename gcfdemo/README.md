@@ -1,4 +1,4 @@
-# Hello TSBE Cloud Function
+# HelloTSBE - Google Cloud Function Demo
 <https://console.cloud.google.com/functions>
 
 ## Deploy / Test function
