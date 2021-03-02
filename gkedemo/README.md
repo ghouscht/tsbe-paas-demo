@@ -40,7 +40,12 @@ curl http://$SERVICE_IP/
 curl -X POST -d '{"name":"Thomas"}' http://$SERVICE_IP/
 ```
 
-## Cleanup
+### 5. Cleanup
 ```bash
 gcloud container clusters delete my-first-cluster-1 --region us-central1-c
 ```
+
+## Questions
+* Kann das go Programm auch lokal auf dem PC ausgeführt werden (sofern ein go Compiler installiert ist)? Warum?
+* Was passiert nach dem Ende des http Requests (curl bzw. Aufrug mit dem Browser) mit den Containern?
+* Wo sind die grossen Unterschiede zur FaaS Lösung mit Google Cloud Functions?
