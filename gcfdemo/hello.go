@@ -4,13 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"html"
-	"log"
 	"net/http"
 )
 
 // HelloTSBE is an HTTP Cloud Function with a request parameter.
 func HelloTSBE(w http.ResponseWriter, r *http.Request) {
-	log.Println("HelloTSBE start")
+	//log.Println("HelloTSBE start")
 
 	var d struct {
 		Name string `json:"name"`
@@ -25,5 +24,5 @@ func HelloTSBE(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Fprintf(w, "Hello, TSBE student %s!", html.EscapeString(d.Name))
 
-	log.Println("HelloTSBE stop")
+	//log.Println("HelloTSBE stop")
 }
