@@ -10,14 +10,10 @@ docker push ghouscht/tsbe-paas-demo:latest
 
 ## Create a GKE Cluster
 ### 1. provision Cluster
-Easiest way is via WebUI open the link above and do the following: 
-
-1. Erstellen, Standard -> Konfigurieren
-2. "Mein erster Cluster" -> Jetzt erstellen
-
 ```bash
+gcloud container clusters create my-first-cluster-1 --region europe-west6-a --disk-size 32G --num-nodes 3  --release-channel rapid
 gcloud container clusters list
-gcloud container clusters get-credentials my-first-cluster-1 --region us-central1-c
+gcloud container clusters get-credentials my-first-cluster-1 --region europe-west6-a
 ```
 
 ### 2. test if cluster works
@@ -42,7 +38,7 @@ curl -X POST -d '{"name":"Thomas"}' http://$SERVICE_IP/
 
 ### 5. Cleanup
 ```bash
-gcloud container clusters delete my-first-cluster-1 --region us-central1-c
+gcloud container clusters delete my-first-cluster-1 --region europe-west6-a
 ```
 
 ## Questions
