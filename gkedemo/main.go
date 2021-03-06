@@ -6,15 +6,21 @@ import (
 	"html"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
-	if err := http.ListenAndServe(":8080", HelloTSBE()); err != nil {
+	hn, err := os.Hostname()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err := http.ListenAndServe(":8080", HelloTSBE(hn)); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func HelloTSBE() http.HandlerFunc {
+func HelloTSBE(hn string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		//log.Println("HelloTSBE start")
 
@@ -22,14 +28,14 @@ func HelloTSBE() http.HandlerFunc {
 			Name string `json:"name"`
 		}
 		if err := json.NewDecoder(r.Body).Decode(&d); err != nil {
-			fmt.Fprint(w, "Hello, TSBE students!")
+			fmt.Fprintf(w, "Hello, TSBE students form %s!", hn)
 			return
 		}
 		if d.Name == "" {
-			fmt.Fprint(w, "Hello, TSBE students!")
+			fmt.Fprint(w, "Hello, TSBE students from %s!", hn)
 			return
 		}
-		fmt.Fprintf(w, "Hello, TSBE student %s!", html.EscapeString(d.Name))
+		fmt.Fprintf(w, "Hello, TSBE student %s from %s!", html.EscapeString(d.Name), hn)
 
 		//log.Println("HelloTSBE stop")
 	}
