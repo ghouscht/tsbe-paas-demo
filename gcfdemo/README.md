@@ -41,7 +41,7 @@ gcloud functions list
 
 ## Questions
 * Kann das go Programm auch lokal auf dem PC ausgeführt werden (sofern ein go Compiler installiert ist)? Warum?
-* Was passiert nach dem Ende des http Requests (curl bzw. Aufrug mit dem Browser) mit der Funktion?
+* Was passiert nach dem Ende des http Requests (curl bzw. Aufruf mit dem Browser) mit der Funktion?
 * Was versteht ihr unter dem Begriff "cold start"? Wie könnte dieser mit dem Begriff "function warming" zusammen hängen?
 
 ## More Infos
