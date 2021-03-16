@@ -1,0 +1,10 @@
+---
+- name: Do something with the students
+  hosts: students
+  remote_user: student
+  become: yes
+  tasks:
+  - name: Install lighttpd
+    package:
+      name: lighttpd
+      state: present

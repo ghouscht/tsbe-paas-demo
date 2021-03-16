@@ -70,7 +70,7 @@ resource "google_compute_instance" "gateway" {
         ssh-keys = "student:${file("id_rsa.pub")}"
     }
 
-    metadata_startup_script = "echo '*** GATEWAY ***' | sudo tee /etc/motd"
+    metadata_startup_script = "echo '*** GATEWAY ***' | sudo tee /etc/motd; sudo apt -y install ansible dnsutils"
 
     network_interface {
         network = "default"
@@ -79,6 +79,7 @@ resource "google_compute_instance" "gateway" {
         }
     }
 }
+
 
 // A variable for extracting the public IP address of the gateway instance.
 output "gateway" {
