@@ -70,7 +70,7 @@ resource "google_compute_instance" "gateway" {
         ssh-keys = "student:${file("id_rsa.pub")}"
     }
 
-    metadata_startup_script = "echo '*** GATEWAY ***' | sudo tee /etc/motd; sudo apt -y install ansible dnsutils"
+    metadata_startup_script = "echo '*** GATEWAY ***' | sudo tee /etc/motd"
 
     network_interface {
         network = "default"

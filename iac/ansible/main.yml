@@ -1,10 +1,41 @@
 ---
-- name: Do something with the students
+# Prep. Gateway
+- name: Prepare the gateway for hands-on
+  hosts: gateway
+  remote_user: student
+  become: yes
+  tasks:
+  - name: Install python
+    package:
+      name: python
+      state: present
+  - name: Install ansible
+    package: 
+      name: ansible
+      state: present
+  - name: Copy id_rsa
+    copy:
+      src: ../id_rsa
+      dest: /home/student/.ssh/id_rsa
+      owner: student
+      group: student
+      mode: 0600
+  - name: Create directory for each student 
+    file:
+      path: /home/student/{{ item }}
+      state: directory
+      owner: student
+      group: student
+      mode: 0755
+    loop: "{{ students }}"
+
+# Prep. students
+- name: Prepare the student VMs for hands-on
   hosts: students
   remote_user: student
   become: yes
   tasks:
-  - name: Install lighttpd
+  - name: Install python
     package:
-      name: lighttpd
+      name: python
       state: present

@@ -39,11 +39,22 @@ ssh-add -l
 
 # Ansible
 1. Change to *ansible* directory
-2. Test if everything works as expected.
+2. "Render" the inventory (stupid!):
+```bash
+cat inventory.tmpl | envsubst > inventory
+```
+
+3. Test if everything works as expected.
 ```bash
 ansible -m ping -u student -i inventory all
 ```
-3. Print facts of all remote systems.
+
+4. Print facts of all remote systems.
 ```
 ansible -m setup -u student -i inventory all
+```
+
+5. Prepare everything for hands on:
+```
+ansible-playbook -i inventory main.yml
 ```

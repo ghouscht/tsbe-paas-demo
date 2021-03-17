@@ -12,3 +12,9 @@ vm-sm
 vm-sp
 vm-tg
 vm-wm
+
+[gateway]
+34.65.88.131
+
+[gateway:vars]
+students=["bl","ff","gc","gl","gs","ic","ls","mv","rc","sm","sp","tg","wm"]
