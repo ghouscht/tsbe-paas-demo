@@ -4,7 +4,7 @@
 3. Wechselt in der Powershell auf euren Desktop: `cd Desktop`
 4. Öffnet nun eine ssh Verbindung zum gateway Server in der google Cloud: `ssh -i id_rsa student@34.65.71.18`.
 5. Führt den Befehl `pwd` aus, die Ausgabe muss */home/student* sein.
-6. Erstellt einen neuen Ordner mit euren initialen. Bsp. Thomas Gosteli: `mkdir tg` und wechselt in den neuen Ordner `cd tg`.
+6. Wechselt in euren persönlichen Ordner. Bsp `cd tg`.
 7. Erstellt nun in diesem Ordner ein Ansible Inventory, die Gruppe soll *hosts* heissen und tragt euren persönlichen Host ein (*vm-tg* zum Beispiel):
 ```plaintext
 [hosts]
