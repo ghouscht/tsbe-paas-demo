@@ -1,20 +1,20 @@
 [students]
 vm-bl
+vm-cg
+vm-ci
 vm-ff
-vm-gc
-vm-gl
-vm-gs
-vm-ic
-vm-ls
-vm-mv
+vm-lg
+vm-ms
+vm-mw
+vm-ps
 vm-rc
-vm-sm
-vm-sp
+vm-sg
+vm-sl
 vm-tg
-vm-wm
+vm-vm
 
 [gateway]
-34.65.88.131
+34.65.243.3
 
 [gateway:vars]
-students=["bl","ff","gc","gl","gs","ic","ls","mv","rc","sm","sp","tg","wm"]
+students=["bl","ff","gc","gl","gs","ci","ls","mv","rc","sm","sp","tg","wm"]

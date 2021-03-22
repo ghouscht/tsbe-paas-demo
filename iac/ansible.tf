@@ -3,17 +3,17 @@ variable "students" {
     default = {
         "tg" = 1
         "bl" = 2
-        "gc" = 3
-        "rc" = 4
-        "ic" = 5
-        "ff" = 6
-        "gl" = 7
-        "sm" = 8
-        "wm" = 9
-        "sp" = 10
-        "gs" = 11
-        "ls" = 12
-        "mv" = 13
+        "cg" = 3
+        "ci" = 4
+        "ff" = 5
+        "lg" = 6
+        "ms" = 7
+        "mw" = 8
+        "ps" = 9
+        "rc" = 10
+        "sg" = 11
+        "sl" = 12
+        "vm" = 13
     }
 }
 
@@ -22,7 +22,7 @@ resource "google_compute_instance" "student" {
     for_each = var.students
 
     name         = "vm-${each.key}"
-    machine_type = "f1-micro"
+    machine_type = "e2-micro"
     zone         = "europe-west6-a"
 
     boot_disk {
@@ -57,7 +57,7 @@ output "students" {
 // Machine we use as an ssh gateway. Quota for external IPs is limited to 8 and we got more students, so we use this machine as gateway.
 resource "google_compute_instance" "gateway" {
     name         = "gateway"
-    machine_type = "f1-micro"
+    machine_type = "e2-small"
     zone         = "europe-west6-a"
 
     boot_disk {
