@@ -1,0 +1,10 @@
+---
+groups:
+  - name: myalerts
+    rules:
+      - alert: InstanceDown
+        expr: 'up == 0'
+        for: 1m
+      - alert: HighCPUusage
+        expr: 'avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100 < 50'
+        for: 1m
